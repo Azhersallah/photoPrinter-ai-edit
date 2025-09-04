@@ -1,0 +1,301 @@
+/* Editor overlay */
+.editor-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    padding: var(--space-md);
+}
+
+.editor-container {
+    background-color: var(--color-surface);
+    border-radius: var(--radius-md);
+    width: 100%;
+    max-width: 1200px;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--shadow-lg);
+}
+
+.editor-header {
+    padding: var(--space-md);
+    border-bottom: 1px solid var(--color-border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.editor-main {
+    display: flex;
+    flex: 1;
+    gap: var(--space-md);
+    overflow: hidden;
+}
+
+@media (max-width: 1024px) {
+    .editor-main {
+        flex-direction: column;
+    }
+}
+
+.editor-preview {
+    flex: 1;
+    position: relative;
+    border: 1px solid var(--color-border);
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f5f5f5;
+    min-height: 400px;
+}
+
+.editor-preview img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.editor-tools {
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    overflow-y: auto;
+    padding: var(--space-md);
+}
+
+.mar{
+    height: 50px;
+    padding-top: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@media (max-width: 1024px) {
+    .editor-tools {
+        width: 100%;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+}
+
+.tool-group {
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    padding: var(--space-md);
+    flex: 1;
+    min-width: 250px;
+}
+
+.tool-group h3 {
+    margin-bottom: var(--space-md);
+    color: var(--color-primary);
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+}
+
+.editor-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--space-md);
+    padding: var(--space-md);
+    border-top: 1px solid var(--color-border);
+}
+
+/* Annotations */
+.annotation {
+    position: absolute;
+    cursor: move;
+    user-select: none;
+    z-index: 10;
+}
+
+/* Updated styles for pre tag used as text annotation */
+.text-annotation {
+    background-color: transparent;
+    border: 1px dashed rgba(0,0,0,0.3); /* Add a subtle dashed border for visibility */
+    outline: none; /* Remove default outline for editable elements */
+    white-space: pre-wrap; /* Allows text to wrap within the pre element */
+    word-break: break-word; /* Ensures long words break to prevent overflow */
+    min-width: 100px; /* Minimum width for the text box */
+    min-height: 30px; /* Minimum height for the text box */
+    text-align: right; /* Changed to right for RTL consistency */
+    padding: var(--space-xs);
+    line-height: 1.2;
+    direction: rtl;
+}
+
+.shape-annotation {
+    border-style: solid;
+    background-color: transparent;
+}
+
+.annotation-handle {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: var(--color-primary);
+    border-radius: 50%;
+    z-index: 20;
+}
+
+/* Specific styles for each resize handle */
+.resize-handle {
+    background: #fff;
+    border: 2px solid #007bff;
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    z-index: 20;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.annotation.active .resize-handle {
+    opacity: 1;
+}
+
+.resize-handle:hover {
+    background: #007bff;
+    transform: scale(1.2);
+}
+
+.resize-handle-nw { top: -5px; left: -5px; cursor: nwse-resize; }
+.resize-handle-n { top: -5px; left: calc(50% - 5px); cursor: ns-resize; }
+.resize-handle-ne { top: -5px; right: -5px; cursor: nesw-resize; }
+.resize-handle-w { top: calc(50% - 5px); left: -5px; cursor: ew-resize; }
+.resize-handle-e { top: calc(50% - 5px); right: -5px; cursor: ew-resize; }
+.resize-handle-sw { bottom: -5px; left: -5px; cursor: nesw-resize; }
+.resize-handle-s { bottom: -5px; left: calc(50% - 5px); cursor: ns-resize; }
+.resize-handle-se { bottom: -5px; right: -5px; cursor: nwse-resize; }
+
+
+.annotation-controls {
+    position: absolute;
+    top: -32px;
+    right: 0;
+    display: flex;
+    gap: var(--space-xs);
+    background-color: var(--color-surface);
+    padding: var(--space-xs);
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-sm);
+    opacity: 0;
+    transition: var(--transition-fast);
+    z-index: 30;
+}
+
+.annotation:hover .annotation-controls {
+    opacity: 1;
+}
+
+.annotation-control-btn {
+    width: 24px;
+    height: 24px;
+    border: none;
+    border-radius: var(--radius-sm);
+    background-color: var(--gray-100);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--text-sm);
+    transition: var(--transition-fast);
+}
+
+.annotation-control-btn:hover {
+    background-color: var(--gray-200);
+}
+
+/* Crop overlay */
+.crop-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 15;
+    transition: clip-path 0.1s ease;
+}
+
+.crop-selection {
+    position: absolute;
+    border: 2px dashed white;
+    background-color: rgba(255, 255, 255, 0.2);
+    z-index: 20;
+    cursor: move;
+    box-shadow: 0 0 0 1px rgba(255,255,255,0.5);
+}
+
+.crop-handle {
+    transition: all 0.1s ease;
+}
+
+.crop-handle:hover {
+    transform: scale(1.2);
+    background-color: #0056b3;
+}
+.annotation {
+    position: relative;
+}
+
+.annotation-handle {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: #fff;
+    border: 2px solid #007bff;
+    border-radius: 50%;
+    z-index: 12;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.annotation:hover .annotation-handle,
+.annotation.active .annotation-handle {
+    opacity: 1;
+}
+
+.annotation-handle:hover {
+    background: #007bff;
+    transform: scale(1.2);
+}
+
+.annotation-controls {
+    position: absolute;
+    top: -30px;
+    right: 0;
+    z-index: 13;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.annotation:hover .annotation-controls {
+    opacity: 1;
+}
+
+.annotation-control-btn {
+    background: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    padding: 4px 8px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.annotation-control-btn:hover {
+    background: #c82333;
+}

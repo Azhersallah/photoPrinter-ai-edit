@@ -1,0 +1,23 @@
+@font-face {
+    font-family: 'Noto Naskh Arabic';
+    src: url('../font/NotoNaskhArabic-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Calibri Regular';
+    src: url('../font/calibri-regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'UniQAIDAR 006';
+    src: url('../font/UniQAIDAR_Blawkrawe006.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}

@@ -1,1 +1,1 @@
-# photoPrinter-ai-edit
+# Photo-Printer

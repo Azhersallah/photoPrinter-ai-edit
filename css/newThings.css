@@ -1,0 +1,284 @@
+.custom-dialog-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999998;
+}
+
+
+img {
+  image-rendering: optimizeSpeed;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: pixelated;
+  image-rendering: optimizeQuality;
+}
+
+.titleG {
+  display: flex;
+  flex-direction: column;
+}
+
+.textG {
+  display: flex;
+  flex-direction: row !important;
+  justify-content: space-between;
+}
+
+.btnG {
+  width: 100% !important;
+}
+
+/* Styles for page navigation */
+#pageNavigation {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.page-section-settings {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+
+.page-section-settings .control-label {
+    justify-content: center;
+    font-size: var(--text-sm);
+    display: flex;
+    align-items: center;
+    justify-content: start;
+}
+
+.full-width-group {
+    display: flex;
+    flex-direction: row;
+    gap: var(--space-sm);
+    width: 100%;
+    height: 40px;
+}
+
+.full-width-group .form-control {
+    width: 100%;
+    text-align: center;
+    padding: var(--space-sm);
+}
+
+.page-navigation-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    gap: 10px;
+    border-top: 1px solid var(--color-border);
+    padding-top: 15px;
+}
+
+.page-counter {
+  font-weight: bold;
+  color: var(--color-text);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+}
+
+/* Added for editor modality */
+body.editor-active>.container {
+  pointer-events: none;
+}
+
+input[type="color"].form-control {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 40px;
+  padding: 0;
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+input[type="color"].form-control::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+input[type="color"].form-control::-webkit-color-swatch {
+  border: none;
+  border-radius: 4px;
+}
+
+input[type="color"].form-control::-moz-color-swatch {
+  border: none;
+  border-radius: 4px;
+}
+
+
+input[type="range"] {
+  -webkit-appearance: none; 
+  appearance: none;
+  width: 100%; 
+  height: 5px; 
+  background: #ffffff; 
+  outline: none; 
+  opacity: 0.7; 
+  -webkit-transition: .2s; 
+  transition: .2s;
+  padding: 0px !important;
+  border: none !important;
+}
+
+
+input[type=range]:hover{
+ opacity: 1;
+cursor: e-resize;
+}
+.editroTextandborderCOlorNeedsmargintop{
+  margin-top: 6px;
+}
+
+/* Find and Replace Panel Styles */
+.find-replace-panel {
+    position: fixed;
+    top: 70px; /* Below the header */
+    right: var(--space-md);
+    background-color: var(--color-surface);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-lg);
+    width: 350px; /* Adjust width as needed */
+    z-index: 1001; /* Above other elements */
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transform: translateY(-10px); /* Initial state for animation */
+    opacity: 0;
+    transition: all 0.3s ease-out;
+}
+
+.find-replace-panel.hidden {
+    transform: translateY(-10px);
+    opacity: 0;
+    pointer-events: none; /* Disable interaction when hidden */
+}
+
+.find-replace-panel:not(.hidden) {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto; /* Enable interaction when visible */
+}
+
+
+.find-replace-header {
+    padding: var(--space-sm) var(--space-md);
+    border-bottom: 1px solid var(--color-border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--gray-100);
+}
+
+[data-theme="dark"] .find-replace-header {
+    background-color: var(--gray-700);
+}
+
+.find-replace-header h3 {
+    margin: 0;
+    color: var(--color-primary);
+    font-size: var(--text-base);
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+}
+
+.find-replace-header .btn-icon {
+    width: 28px;
+    height: 28px;
+    font-size: var(--text-sm);
+}
+
+.find-replace-main {
+    padding: var(--space-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+
+.find-replace-actions {
+    display: flex;
+    gap: var(--space-sm);
+    justify-content: flex-end;
+    margin-top: var(--space-sm);
+}
+
+.find-replace-actions .btn {
+    padding: var(--space-xs) var(--space-sm); /* Smaller buttons */
+    font-size: var(--text-sm);
+}
+
+.find-status {
+    margin-top: var(--space-xs);
+    padding: var(--space-sm);
+    background-color: var(--gray-100);
+    border-radius: var(--radius-sm);
+    text-align: center;
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+}
+
+[data-theme="dark"] .find-status {
+    background-color: var(--gray-700);
+    color: var(--gray-300);
+}
+
+/* Active match highlighting for textareas */
+.find-active-match {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+    background-color: var(--primary-100); /* Highlight background */
+    transition: outline 0.2s ease, background-color 0.2s ease;
+}
+
+/* Dark theme for active match */
+[data-theme="dark"] .find-active-match {
+    background-color: var(--primary-800);
+}
+
+/* Loading Overlay Styles */
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999999; /* Higher than any other overlay */
+    color: white;
+    font-size: 1.2rem;
+    gap: 15px;
+}
+
+.loading-spinner {
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-top: 4px solid white;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

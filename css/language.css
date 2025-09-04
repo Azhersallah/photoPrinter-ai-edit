@@ -1,0 +1,18 @@
+.language-selector {
+    margin-right: var(--space-md);
+    margin-left:auto;
+}
+
+.language-selector select {
+    direction: ltr;
+    width: 120px;
+    padding: var(--space-xs) var(--space-sm);
+}
+
+[dir="rtl"] {
+    --text-direction: rtl;
+}
+
+[dir="ltr"] {
+    --text-direction: ltr;
+}
